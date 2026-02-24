@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Trips - Discover Your Next Adventure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #0a7e5c 0%, #0d966e 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            color: #1a1a2e;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #0a7e5c;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #0a7e5c;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #0d966e;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Features */
+        .features {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 32px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #0a7e5c 0%, #0d966e 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Permissions */
+        .permissions {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .permissions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .permission-card {
+            background: #fff;
+            padding: 28px;
+            border-radius: 16px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .permission-card h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .permission-card p {
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* Developer */
+        .developer {
+            padding: 80px 0;
+            background: #fff;
+            text-align: center;
+        }
+
+        .developer-card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 48px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border-radius: 24px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .developer-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0a7e5c 0%, #0d966e 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 auto 24px;
+        }
+
+        .developer h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .developer-role {
+            color: #0a7e5c;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .developer p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 48px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #0a7e5c;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🌍</div>
+                <span class="logo-text">Group Trips</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#permissions">Permissions</a></li>
+                <li><a href="#developer">Developer</a></li>
+                <li><a href="privacy_policy.html">Privacy Policy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Discover Your Next Adventure</h1>
+            <p>Explore curated group trips from trusted providers. Find domestic and international destinations with powerful map-based discovery.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Download App</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Powerful Features</h2>
+                <p>Everything you need to find and plan your perfect group trip</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Interactive Map View</h3>
+                    <p>Explore trips visually on an interactive map. Tap on markers to see trip details instantly and navigate destinations effortlessly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Advanced Filtering</h3>
+                    <p>Filter by budget range, location, trip type (Domestic/International), travel dates, and providers to find exactly what you're looking for.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">❤️</div>
+                    <h3>Favorites & Saved Trips</h3>
+                    <p>Save your favorite trips for quick access later. Build your personal travel wishlist and compare options easily.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏢</div>
+                    <h3>Multiple Providers</h3>
+                    <p>Access trips from various trusted travel providers in one place. Compare offerings and find the best deals.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Real-time Pricing</h3>
+                    <p>View up-to-date pricing in your local currency. Budget filters help you find trips within your price range.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Date-based Search</h3>
+                    <p>Find trips that match your available travel dates. Plan ahead with clear start and end date information.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3>Detailed Trip Information</h3>
+                    <p>View comprehensive trip details including destination, inclusions, descriptions, and direct booking links.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Domestic & International</h3>
+                    <p>Browse both domestic and international trips with clear categorization and destination details including country, state, and city.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <h3>Rich Media Gallery</h3>
+                    <p>Browse trip photos to get a visual preview of your destination and accommodations before booking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="permissions" id="permissions">
+        <div class="container">
+            <div class="section-header">
+                <h2>App Permissions</h2>
+                <p>We only request permissions necessary to provide you with the best experience</p>
+            </div>
+            <div class="permissions-grid">
+                <div class="permission-card">
+                    <h4>📍 Location Access</h4>
+                    <p>Used to show your current position on the map and provide location-based trip recommendations.</p>
+                </div>
+                <div class="permission-card">
+                    <h4>💾 Storage Access</h4>
+                    <p>Required to save your favorite trips locally on your device for offline access.</p>
+                </div>
+                <div class="permission-card">
+                    <h4>🌐 Internet Access</h4>
+                    <p>Needed to fetch trip data from our servers, load images, and access booking links.</p>
+                </div>
+                <div class="permission-card">
+                    <h4>📷 Camera (Optional)</h4>
+                    <p>May be used for future features like scanning QR codes for trip bookings or uploading travel photos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="developer" id="developer">
+        <div class="container">
+            <div class="developer-card">
+                <div class="developer-avatar">S</div>
+                <h3>Scholarship</h3>
+                <p class="developer-role">Developer</p>
+                <p>Group Trips is developed by Scholarship with a passion for making travel discovery simple and accessible. We believe everyone deserves to explore the world with ease.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Group Trips by Scholarship. All rights reserved. | <a href="privacy_policy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+</body>
+</html>
